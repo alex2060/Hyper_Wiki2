@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User</title>
+  <!-- bootstrap link start -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- bootstrap link end -->
+  <style>
+  .themainbutton{
+    min-width: 220px;
+  }
+  </style>
+</head>
+
+</br>
+</br>
+<body style="background-color: #24222a;">
+
+  <div class="container ">
+    <div class=" d-flex justify-content-center">
+      <div>
+
+          <div id = "stuff"> <label for="uname" class="text-white">Add a Key</label></div>
+        </br>
+        <div class="form-group">
+          <label for="uname" class="text-white">Ledgure_Name</label>
+          <input type="text" class="form-control" id="ledgure_Name" name="ledgure_Name" placeholder="User Name" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Password</label>
+          <input type="text" class="form-control" id="password" name="password" placeholder="Passwords" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Message</label>
+          <input type="text" class="form-control" id="message" name="message" placeholder="message" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Key Message</label>
+          <input type="text" class="form-control" id="keymessage" name="keymessage" placeholder="keymessage" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Key Froward</label>
+          <input type="text" class="form-control" id="keyfroward" name="keyfroward" placeholder="keyfroward" value="">
+        </div>
+
+        <button class="btn btn-primary" onclick="add_user()">Add User</button>
+
+      </div>
+
+
+      </div>
+
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+function add_user(){
+//http://localhost:8000/doit?action_type=add_key&ledgure=u1_led&password=hash&message=mess&email=email&key_message=keymessage&keyfroward=keyforward
+send_Url="(!P???!???P!)?ledgure="+document.getElementById("ledgure_Name").value+"&action_type=add_key&password="+document.getElementById("password").value+"&email="+document.getElementById("email").value+"&message="+document.getElementById("message").value+"&keymessage="+document.getElementById("keymessage").value+"&keyfroward="+document.getElementById("keyfroward").value;
+
+alert(send_Url);
+post_responce(send_Url,send_alert,"varible");
+
+}
+
+function send_alert(A,B){
+  document.getElementById("stuff").innerHTML= "<label for=\"uname\" class=\"text-white\">"+A+"</label></div>";
+}
+
+function post_responce(path,func,varible){
+
+  console.log(path);
+  fetch(path).then(
+      ( response) => {
+          return response.text();
+      })
+      .then((html) => {
+          func(  html.trim()  , varible )
+      });
+}
+
+
+
+
+
+
+
+</script>
+
+
+

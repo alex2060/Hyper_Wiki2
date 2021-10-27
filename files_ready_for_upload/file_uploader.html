@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Read Text File</title>
+</head>
+<body  style="background-color: #24222a;">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <input type="file" name="inputfile"
+            id="inputfile">
+    <br>
+   <td><button onclick="upload()">Load Selected File</button><td>
+    <pre id="output" class="text-white"></pre>
+    <script type="text/javascript">
+    val ="";
+        document.getElementById('inputfile')
+            .addEventListener('change', function() {
+            var fr=new FileReader();
+            fr.onload=function(){
+
+                        console.log(fr.result);
+                        newsting = String(fr.result);
+
+                        val = "";
+                        for (var x = 0; x < newsting.length; x++) {
+                          var c = newsting.charAt(x);
+                          console.log(c);
+                          console.log(c.charCodeAt(0));
+                          test = (c.charCodeAt(0)==38);
+                          console.log( test );
+
+                          if ( test ) {
+                            console.log("inhere");
+                            val=val+"(!W???!"+"???W!)";
+                            console.log(val);
+                          }
+                          else{
+
+                                console.log(c);
+                                console.log(c.charCodeAt(0));
+                                test = (c.charCodeAt(0)==43);
+                                console.log( test );
+
+                                if ( test ) {
+                                  console.log("inhere");
+                                  val=val+"(!L???!"+"???L!)";
+                                  console.log(val);
+                                }
+                                else{
+                                  val=val+c;
+                                }
+
+
+                            
+                          }
+                        }
+                        console.log(val);
+
+                        document.getElementById('output')
+                        .textContent=val;
+            }
+            fr.readAsText(this.files[0]);
+        })
+        function upload(){
+      var anysize = 20;//the size of string 
+      var charset = "abcdefghijklmnopqrstuvwxyz"; //from where to create
+      result="";
+      for( var i=0; i < anysize; i++ ){
+              result += charset[Math.floor(Math.random() * charset.length)%charset.length];
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "(!P???!???P!)", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        post_val = "user=u1&password=top&temmplate_name=mygame"+result+"&template="+encodeURI(val)+"&type=this&replace=!"
+        console.log(post_val);
+        xhr.send(post_val);
+        console.log(xhr.responseText);
+
+        console.log("(!P???!???P!)/doit?action_type=makepage&var=W&rep=&usertemplate_name="+"u1_mygame"+result);
+
+        document.getElementById("output").innerHTML ="<label for=\"output\" class=\"text-white\">"+"(!P???!???P!)?action_type=makepage&rep=&usertemplate_name=u1_mygame"+result+"</label></br>";
+
+
+
+        }
+    </script>
+</body>
+</html>

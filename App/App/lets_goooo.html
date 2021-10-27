@@ -1,0 +1,44 @@
+
+
+
+
+
+
+
+<script type="text/javascript">
+	
+	function make_string () {
+
+      var anysize = 20;//the size of string 
+      var charset = "abcdefghijklmnopqrstuvwxyz"; //from where to create
+      result="";
+      for( var i=0; i < anysize; i++ ){
+              result += charset[Math.floor(Math.random() * charset.length)%charset.length];
+        }
+       return result;
+	}
+
+	console.log(make_string);
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

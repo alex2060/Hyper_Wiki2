@@ -1,0 +1,258 @@
+
+
+
+
+
+
+
+<script type="text/javascript">
+	
+
+function post_responce(path,func,varible){
+
+  console.log(path);
+  fetch(path).then(
+      ( response) => {
+          return response.text();
+      })
+      .then((html) => {
+          func(  html.trim()  , varible )
+      });
+}
+
+
+	function make_string () {
+
+      var anysize = 20;//the size of string 
+      var charset = "abcdefghijklmnopqrstuvwxyz"; //from where to create
+      result="";
+      for( var i=0; i < anysize; i++ ){
+              result += charset[Math.floor(Math.random() * charset.length)%charset.length];
+        }
+       return result;
+	}
+
+	
+
+
+function post_responce(path,func,varible){
+
+  console.log(path);
+  fetch(path).then(
+      ( response) => {
+          return response.text();
+      })
+      .then((html) => {
+          func(  html.trim()  , varible )
+      });
+}
+
+
+path = "http://localhost:8000/doit"
+function Make_user(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&action_type=add_post&password=PASSWOED&text=TEXT_FILD&body=BODY&photo=PHOTO&catagoy=CAT",Make_post,"");
+}
+function Make_post(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_id=vals["id"];
+	post_responce(path+"?key="+vals["id"]+"&action_type=get_post&usekkey=",private_post,"")
+
+}
+
+function private_post(A,B){
+	//alert("private_post")
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&action_type=add_post&password=PASSWOED&text=TEXT_FILD&body=BODY&photo=PHOTO&catagoy=CAT&catagoy_2="+myname+"_led",Get_private_post,"");
+}
+
+function Get_private_post(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	private_postid=vals["id"];
+	post_responce(path+"?key="+vals["id"]+"&action_type=get_post&usekkey=",change_post,"")
+}
+
+function change_post(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&action_type=change_post&password=PASSWOED&key="+post_id+"&text=newtex",viewchanges,"")
+}
+function viewchanges(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?key="+post_id+"&action_type=get_post&usekkey=",make_leddre,"")
+}
+function make_leddre(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&action_type=add_ledgure&password=PASSWOED&email=EMAIL&hashword=hashword&Ledgure=led",makekey,"")
+
+}
+function makekey(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?ledgure="+myname+"_led&action_type=add_key&password=hashword&email=Email&message=message&keymessage=keyword&keyfroward=keyforwar",rm_key,"")
+}
+
+
+
+
+
+
+function rm_key(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?action_type=rm_key&key="+vals["solution"]+"&name="+vals["post_id"]+"&message=message",my_private_post,"");
+
+
+
+}
+function my_private_post(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?key="+private_postid+"&action_type=get_post&usekkey="+vals["post_id"],add_C1,"");
+}
+function add_C1(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+
+	post_responce(path+"?ledgure="+myname+"_led&action_type=add_key&password=hashword&email=Email&message=message&keymessage=keyword&keyfroward=keyforwar",add_crypto1,"")
+
+
+}
+function add_crypto1(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&password=PASSWOED&action_type=add_C&crypto_name="+vals["post_id"]+"&crypto_key="+vals["solution"]+"&crypto_path=http://localhost:8000/doit&L_name="+myname+"_led",add_C2,"");
+}
+function add_C2(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?ledgure="+myname+"_led&action_type=add_key&password=hashword&email=Email&message=message&keymessage=keyword&keyfroward=keyforwar",add_crypto2,"")
+
+}
+function add_crypto2(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&password=PASSWOED&action_type=add_C&crypto_name="+vals["post_id"]+"&crypto_key="+vals["solution"]+"&crypto_path=http://localhost:8000/doit&L_name="+myname+"_led",add_C3,"");
+}
+
+function add_C3(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?ledgure="+myname+"_led&action_type=add_key&password=hashword&email=Email&message=message&keymessage=keyword&keyfroward=keyforwar",add_crypto3,"")
+
+}
+
+function add_crypto3(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname2+"&password=PASSWOED&action_type=add_C&crypto_name="+vals["post_id"]+"&crypto_key="+vals["solution"]+"&crypto_path=http://localhost:8000/doit&L_name="+myname+"_led",add_C4,"");
+}
+
+
+function add_C4(A,B){
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname+"&action_type=maketraid&password=PASSWOED&send_type="+path+myname+"_led&request_type=money1&request_amound=0.1&send_amount=0.2",make_triad,"");
+
+
+}
+
+traid_id = "";
+
+function make_triad(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	traid_id=vals["response"];
+
+	post_responce(path+"?traid_id="+traid_id+"&action_type=traid",print_triad,"");
+
+
+}
+
+function print_triad(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname2+"&action_type=fintraid&password=PASSWOED&traid_id="+vals["traid_id"],complete_traid,"")
+
+}
+function complete_traid(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+
+	post_responce(path+"?user="+myname2+"&action_type=Uprint",print_user,"");
+
+}
+function print_user(A,B){
+	//alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+	post_responce(path+"?user="+myname2+"&action_type=get_C&password=PASSWOED&crypto_path="+path+myname+"_led",get_C_back,"");
+}
+function get_C_back(A,B){
+	alert(A);
+	vals=JSON.parse(A);
+	console.log(vals);
+
+}
+
+
+private_postid ="";
+post_id="";
+
+myname = make_string();
+myname2= make_string();
+
+
+
+function blank(A,B){
+
+}
+
+post_responce(path+"?user="+myname2+"&action_type=adduser&password=PASSWOED&email=EMAIL",blank,"")
+
+post_responce(path+"?user="+myname+"&action_type=adduser&password=PASSWOED&email=EMAIL",Make_user,myname)
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

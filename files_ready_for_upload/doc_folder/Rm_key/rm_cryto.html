@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Traid</title>
+  <!-- bootstrap link start -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- bootstrap link end -->
+  <style>
+  .themainbutton{
+    min-width: 220px;
+  }
+
+  .url {
+    max-width: 700px;
+  }
+  </style>
+</head>
+
+
+<body style="background-color: #24222a;">
+
+
+
+</br>
+</br>
+<label for="uname" class="text-white">
+
+
+
+
+</label>
+
+</br>
+<div class=" d-flex justify-content-center">
+  <div>
+        <label for="uname" class="text-white">Message</label>
+        <input type="text" class="form-control" id="Message" name="Message" placeholder="Message" value="">
+      </br>
+        <button class="btn btn-primary" onclick="add_user()">Make_URl</button>
+        </br>
+      </br>
+      <label for="uname" class="text-white" >
+      <div id="output" class="url"></div>
+    </label>
+      </div>
+</div>
+
+</br>
+</br>
+
+
+</br>
+</br>
+</br>
+<script>
+
+//   http://localhost:8000/doit?action_type=rm_ke&key=&name=&message=
+
+
+
+function add_user () {
+  alert("letsgo");
+  var mygo ="(!0???!???0!)";
+
+  vals = mygo.split("?");
+
+
+  alert(vals);
+  my_cash_url="(!P???!???P!)?action_type=rm_ke&key="+vals[0]+"&name="+vals[1]+"&message="+escape(document.getElementById("Message").value);
+  alert(my_cash_url)
+  document.getElementById("output").innerHTML=my_cash_url;
+
+}
+
+
+</script>
+
+
+
+
+</body>

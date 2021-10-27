@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+
+#box1 {
+	position: absolute;
+    background: green;
+    height: 200px;
+    width: 200px;
+    color: white;
+    right: 50px;
+    top: 200px;
+}
+
+#box2 {
+	position: absolute;
+    background: green;
+    height: 200px;
+    width: 200px;
+    color: white;
+    right: 50px;
+    top: 200px;
+}
+
+
+</style>
+</head>
+<body style="background-color: #24222a;">
+
+
+<div class="slidecontainer">
+  
+  <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+
+</div>
+<button class="btn btn-info themainbutton" onclick="window.location.href=' /payment_gateway?item=myitem   ';">Shop            </button>
+
+<div id="box1">
+
+
+
+</div>
+
+<div id="box2">
+
+
+
+</div>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+
+function box1(val ){
+	document.getElementById("box1").style.right =(-200  +15*convert_to_float(val) ).toString() +"px" ;
+	document.getElementById("box1").style.top =  (200  -0.5*(convert_to_float(20-val/2) ) **2 ).toString() +"px" ;
+
+	if (val>27) {
+		document.getElementById("box1").innerHTML = " <img src=\"https://www.goodfreephotos.com/albums/people/person-walking-in-a-tunnel.jpg\" alt=\"Girl in a jacket\" width=\"100%\" height=\"100%\"> "; 
+	}
+	else{
+		document.getElementById("box1").innerHTML = " <img src=\"https://www.goodfreephotos.com/albums/people/two-kids-walking-with-ski-poles.jpg\" alt=\"Girl in a jacket\" width=\"100%\" height=\"100%\"> ";
+	}
+
+}
+
+
+function box2(val ){
+	document.getElementById("box2").style.right =( 900  -15*convert_to_float(val) ).toString() +"px" ;
+	document.getElementById("box2").style.top =  ( 500  +0.5*(convert_to_float(20-val/2) ) **2 ).toString() +"px" ;
+	if (val>50) {
+		document.getElementById("box2").innerHTML = "box1";
+
+
+				document.getElementById("box2").innerHTML = " <img src=\"https://pixnio.com/free-images/2017/03/18/2017-03-18-11-24-25.jpg \" alt=\"Girl in a jacket\" width=\"100%\" height=\"100%\"> ";
+	}
+	else{
+
+				document.getElementById("box2").innerHTML = " <img src=\"https://www.publicdomainpictures.net/pictures/30000/velka/walking.jpg \" alt=\"Girl in a jacket\" width=\"100%\" height=\"100%\"> ";
+
+	}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+function convert_to_float(a) {
+      
+    // Type conversion
+    // of string to float
+    var floatValue = +(a);
+      
+    // Return float value
+    return floatValue; 
+} 
+    
+
+
+
+window.setInterval(function(){
+
+
+var jobValue = document.getElementById('myRange').value;
+
+console.log(jobValue);
+box1(jobValue );
+box2(jobValue )
+
+}, 40);
+
+
+</script>
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Traid</title>
+  <!-- bootstrap link start -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- bootstrap link end -->
+  <style>
+  .themainbutton{
+    min-width: 220px;
+  }
+  </style>
+</head>
+
+</br>
+</br>
+<body style="background-color: #24222a;">
+
+  <div class="container ">
+    <div class=" d-flex justify-content-center">
+      <div>
+
+          <div id = "stuff"> <label for="uname" class="text-white">Make Traid</label></div>
+        </br>
+        <div class="form-group">
+          <label for="uname" class="text-white">User Name</label>
+          <input type="text" class="form-control" id="user" name="user" placeholder="User Name" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="text-white">Password</label>
+          <input type="text" class="form-control" id="password" name="password" placeholder="Passwords" value="">
+        </div>
+        <div class="form-group">
+          <label for="uname" class="text-white">path</label>
+          <input type="text" class="form-control" id="path" name="path" placeholder="Passwords" value="">
+        </div>
+
+
+
+
+        <button class="btn btn-primary" onclick="add_user()">Make Traid</button>
+
+      </div>
+
+
+      </div>
+
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+function add_user(){
+
+
+
+//http://localhost:8001/doit?user=myuser3&password=pass&traid_id=bvmrphmjgflutxuqidazavnulqiwkoopgctzotsqvvnmehvanvjeywfmwzkxmrun&action_type=fintraid
+
+//http://localhost:8001/doit?user=myuser3&password=pass&crypto_name=&crypto_path=http%3A%2F%2Falexhaussmann.com%2Fadhaussmann%2Fa_final%2Fptest_led&crypto_key=&L_name=&action_type=get_C
+myval="user="+document.getElementById("user").value+"&action_type=get_C&password="+document.getElementById("password").value+"&crypto_path="+document.getElementById("path").value;
+
+alert(myval);
+send_Url="(!P???!???P!)?"+myval
+
+post_responce(send_Url,send_alert,"varible");
+
+}
+
+function send_alert(A,B){
+  myvalue=JSON.parse(A);
+  console.log(myvalue);
+
+  document.getElementById("stuff").innerHTML= "<label for=\"uname\" class=\"text-white\">"+A+"</label></div>";
+}
+
+function post_responce(path,func,varible){
+
+  console.log(path);
+  fetch(path).then(
+      ( response) => {
+          return response.text();
+      })
+      .then((html) => {
+          func(  html.trim()  , varible )
+      });
+}
+</script>
+
+
+
