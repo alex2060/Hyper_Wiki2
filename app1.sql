@@ -227,6 +227,8 @@ CREATE TABLE `users` (
   `email` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `users` (`time`, `hashword`, `uname`, `email`) VALUES
+('2021-10-28 02:36:44', 'top', 'u1', '');
 --
 -- Indexes for dumped tables
 --
