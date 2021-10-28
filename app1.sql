@@ -279,6 +279,8 @@ ALTER TABLE `traidtable`
 ALTER TABLE `Acounts`
   ADD PRIMARY KEY (`Ledgurename`(248));
 
+ALTER TABLE `redirect`
+  ADD PRIMARY KEY (`id`(248));
 --
 -- Indexes for table `users`
 --
