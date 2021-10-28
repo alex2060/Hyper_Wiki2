@@ -604,7 +604,7 @@ def return_template2(usertemplate_name,var1,setion,setion2,rep,cnx):
 #makes and redirects urls
 def redirect_req(var,types,cnx):
   if types=="":
-    sql="SELECT `url` FROM `redirect2` WHERE `id` LIKE %s "
+    sql="SELECT `url` FROM `redirect` WHERE `id` LIKE %s "
     tuple1 = (var)
     cursor = cnx.cursor()
     cursor.execute(sql,tuple1)
@@ -623,7 +623,7 @@ def redirect_req(var,types,cnx):
     myrandom = get_random_string(128)
     post_id = hashlib.sha256(myrandom.encode()).hexdigest()
     post_id = post_id[:15]
-    sql="INSERT INTO `redirect2` (`id`, `url`, `time`) VALUES (%s, %s, CURRENT_TIMESTAMP ); "
+    sql="INSERT INTO `redirect` (`id`, `url`, `time`) VALUES (%s, %s, CURRENT_TIMESTAMP ); "
     tuple1 = (post_id,var)
     cursor = cnx.cursor()
     cursor.execute(sql,tuple1)
